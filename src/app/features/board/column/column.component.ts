@@ -27,6 +27,8 @@ export class ColumnComponent {
       .filter((task) => task.status === this.status())
   );
 
+  readonly taskCount = computed(() => this.tasks().length);
+
   onDropped(event: CdkDragDrop<Task[]>): void {
     const droppedTask = event.item.data as Task;
     const anchorTask = this.taskAfterDrop(droppedTask.id, event.currentIndex);
