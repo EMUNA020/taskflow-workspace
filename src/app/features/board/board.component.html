@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <span>TaskFlow Workspace</span>
+  <span class="spacer"></span>
+  <button mat-flat-button (click)="openCreateDialog()">
+    <mat-icon>add</mat-icon>
+    Add task
+  </button>
+</mat-toolbar>
+
+<app-filter-bar />
+
+<div class="board" cdkDropListGroup>
+  @for (status of statuses; track status.id) {
+    <app-column
+      [status]="status.id"
+      [title]="status.label"
+      (editTask)="editTask($event)"
+      (deleteTask)="deleteTask($event)"
+    />
+  }
+</div>

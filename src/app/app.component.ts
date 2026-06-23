@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
+import { BoardComponent } from './features/board/board.component';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [BoardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'taskflow-workspace';
-}
+export class AppComponent {}

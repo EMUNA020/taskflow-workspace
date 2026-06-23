@@ -1,0 +1,21 @@
+<mat-card class="task-card" [class]="'priority-' + task().priority" (click)="edit.emit()">
+  <mat-card-content>
+    <h3 class="task-title">{{ task().title }}</h3>
+    <p class="description">{{ task().description }}</p>
+
+    <div class="chips">
+      <mat-chip-set>
+        <mat-chip>{{ task().priority }}</mat-chip>
+        @for (tag of task().tags; track tag) {
+          <mat-chip>{{ tag }}</mat-chip>
+        }
+      </mat-chip-set>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-icon-button aria-label="Delete task" (click)="onDeleteClick($event)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

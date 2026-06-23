@@ -1,0 +1,45 @@
+<div class="filter-bar">
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      placeholder="Search by title or description"
+      [value]="filterService.searchText()"
+      (input)="onSearchInput($event)"
+    />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="priority-field">
+    <mat-label>Priority</mat-label>
+    <mat-select
+      multiple
+      [value]="filterService.selectedPriorities()"
+      (selectionChange)="filterService.setPriorities($event.value)"
+    >
+      @for (priority of priorities; track priority) {
+        <mat-option [value]="priority">{{ priority }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  @if (availableTags().length > 0) {
+    <mat-form-field appearance="outline" class="tags-field">
+      <mat-label>Tags</mat-label>
+      <mat-select
+        multiple
+        [value]="filterService.selectedTags()"
+        (selectionChange)="filterService.setTags($event.value)"
+      >
+        @for (tag of availableTags(); track tag) {
+          <mat-option [value]="tag">{{ tag }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  }
+
+  <button mat-stroked-button type="button" (click)="filterService.clear()">
+    <mat-icon>clear</mat-icon>
+    Clear filters
+  </button>
+</div>

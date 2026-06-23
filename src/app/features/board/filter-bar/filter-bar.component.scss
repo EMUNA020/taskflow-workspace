@@ -1,0 +1,17 @@
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.search-field {
+  flex: 1;
+  min-width: 220px;
+}
+
+.priority-field,
+.tags-field {
+  min-width: 160px;
+}
